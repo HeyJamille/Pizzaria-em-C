@@ -1,0 +1,49 @@
+#include <stdio.h>
+int main(){
+  int z,a,i,b,x,n;
+  float v,soma,vf;
+
+  printf("\nMenu\n1 - Mussarela R$ 12,00\n2 - Calabresa R$ 12,00\n3 - Mista     R$ 12,00\n4 - Frango    R$ 13,00");
+  printf("\n\nDigite a quantidade de pizza desejada: ");
+  scanf("%d",&n);
+
+  if(n==1){
+    printf("Digite o número referente a sua pizza: ");
+    scanf("%d",&a);}
+    if(a==1 || a==2 || a==3)
+      v=12.00;
+    if(a==4)
+      v=13.00;
+  else{
+    for(i=0; i<n; i++){
+      printf("Digite o número referente a pizza %d: ",i+1);
+      scanf("%d",&a);} 
+      
+      if(a==1 || a==2 || a==3)
+        v=12.00;
+      if(a==4)
+        v=13.00;
+      
+      v=v+0;}
+      v=v*n;
+      
+  printf("\n========================================\n");
+
+  printf("\nVocê irá querer refrigerante (R$: 2,50 cada)?\n1 - Sim\n2 - Não\nDigite o número referente a sua escolha: ");
+  scanf("%d",&b);
+
+  if(b==1){
+    printf("\nMenu de refrigerante\n1 - Coca cola\n2 - Pepsi\n3 - Guaraná\nSua escolha: ");
+    scanf("%d",&x);}
+    
+  printf("\nDigite a quantidade de refrigerante: ");
+  scanf("%d",&z);
+  vf=2.50*z;
+
+  v=v+vf;
+
+
+
+printf("\nValor total: %.2f",v);
+
+return 0;}
