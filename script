@@ -1,49 +1,134 @@
 #include <stdio.h>
-int main(){
-  int z,a,i,b,x,n;
-  float v,soma,vf;
 
-  printf("\nMenu\n1 - Mussarela R$ 12,00\n2 - Calabresa R$ 12,00\n3 - Mista     R$ 12,00\n4 - Frango    R$ 13,00");
-  printf("\n\nDigite a quantidade de pizza desejada: ");
-  scanf("%d",&n);
+int main()
+{
+    int opcao,sabor,i,j,refrigerante,quantRefri,quantPizza;
+    float resultadoF,resultado,soma,v;
 
-  if(n==1){
-    printf("Digite o número referente a sua pizza: ");
-    scanf("%d",&a);}
-    if(a==1 || a==2 || a==3)
-      v=12.00;
-    if(a==4)
-      v=13.00;
-  else{
-    for(i=0; i<n; i++){
-      printf("Digite o número referente a pizza %d: ",i+1);
-      scanf("%d",&a);} 
+    printf("Menu \n\n"
+    "1 - Mussarela R$ 12,00 \n"
+    "2 - Calabresa R$ 12,00 \n"
+    "3 - Mista     R$ 12,00 \n"
+    "4 - Frango    R$ 13,00" );
+
+    printf("\n\n");
+
+    printf("Quantidade de pizza desejada: ");
+    scanf("%d",&quantPizza);
+    printf("\n");
+
+    if(quantPizza==1)
+    {
+        printf("Número referente a sua pizza: ");
+        scanf("%d",&sabor);
+
+        if(sabor==1 || sabor==2 || sabor==3)
+            v=12.00;
+        else if(sabor==4)
+            v=13.00;
+        else
+            {
+                while(sabor>4 || sabor==0)
+                    { 
+                        printf("\n========================================\n");
+                        printf("\nNúmero referente a pizza inválido. Por favor, tente novamente de acordo com o menu.\n\n");
+            
+                        printf("%dª pizza: ",i+1);
+                        scanf("%d",&sabor);
+                        printf("\n========================================\n");
+                        if(sabor<4)
+                            break;
+                    }
+            }
+    }
+    else if(quantPizza>1)
+    {
+        printf("========================================\n");
+        for(i=0; i<quantPizza; i++)
+        {
+            printf("%dª pizza: ",i+1);
+            scanf("%d",&sabor);
       
-      if(a==1 || a==2 || a==3)
-        v=12.00;
-      if(a==4)
-        v=13.00;
-      
-      v=v+0;}
-      v=v*n;
-      
-  printf("\n========================================\n");
+            if(sabor==1 || sabor==2 || sabor==3)
+                v=12.00;
+            else if(sabor==4)
+                v=13.00;
+            else
+            {
+                while(sabor>4 || sabor==0)
+                    { 
+                        printf("\nNúmero referente a pizza inválido. Por favor, tente novamente de acordo com o menu.\n\n");
+            
+                        printf("%dª pizza: ",i+1);
+                        scanf("%d",&sabor);
 
-  printf("\nVocê irá querer refrigerante (R$: 2,50 cada)?\n1 - Sim\n2 - Não\nDigite o número referente a sua escolha: ");
-  scanf("%d",&b);
+                        if(sabor<4)
+                            break;
+                    }
+            }
+        resultadoF=resultadoF+v;
+        }
+    }
 
-  if(b==1){
-    printf("\nMenu de refrigerante\n1 - Coca cola\n2 - Pepsi\n3 - Guaraná\nSua escolha: ");
-    scanf("%d",&x);}
+    printf("\n========================================\n");
+
+    printf("\nVocê irá querer refrigerante (R$: 2,50 cada)? \n\n"
+    "1 - Sim \n"
+    "2 - Não \n\n"
+
+    "Número referente a sua escolha:");
+    scanf("%d",&opcao);
+
+    printf("\n========================================\n");
+
+    while(opcao>2 || opcao<1)
+        { 
+            printf("\nVocê irá querer refrigerante (R$: 2,50 cada)? \n\n"
+            "1 - Sim \n"
+            "2 - Não \n\n"
+
+            "Número referente a sua escolha:");
+            scanf("%d",&opcao);
+
+            printf("\n========================================\n");
+
+            if(opcao==1)
+                break;
+            else if(opcao==2)
+            {
+                printf("Sem refrigerante");
+                break;
+            }
+        }
+
+    if(opcao==1)
+    {
+        printf("\nMenu de refrigerante\n\n"
+        "1 - Coca cola \n"
+        "2 - Pepsi \n"
+        "3 - Guaraná \n\n"
     
-  printf("\nDigite a quantidade de refrigerante: ");
-  scanf("%d",&z);
-  vf=2.50*z;
+        "Sua escolha: ");
+        scanf("%d",&refrigerante);
 
-  v=v+vf;
+        printf("Quantidade: ");
+        scanf("%d",&quantRefri);
+    
+        resultado = (quantRefri*2.50);
+        resultadoF = resultadoF+resultado;
+    }
+    else if(opcao==2) 
+    {
+        printf("Sem refrigerante");
+        quantRefri=0;
+    }
 
+    printf("\n========================================\n");
+    printf("\nITENS PEDIDOS:");
 
+    printf("\n\nPizzas: %d", quantPizza);
+    printf("\nRefrigerantes: %d", quantRefri);
+    printf("\n\nValor total: %.2f",resultadoF);
 
-printf("\nValor total: %.2f",v);
-
-return 0;}
+    printf("\n\n========================================\n");
+}
